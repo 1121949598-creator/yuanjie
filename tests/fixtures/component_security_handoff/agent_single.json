@@ -1,0 +1,226 @@
+[
+  {
+    "schema_version": "1.0",
+    "scan_id": "handoff-agent_single",
+    "scene": "release_precheck",
+    "component": {
+      "component_id": "component_e11c274a0c59",
+      "component_type": "agent",
+      "name": "agent",
+      "declared_purpose": "Read local files and search the web.",
+      "source_spans": [
+        {
+          "path": "agent.py",
+          "start_line": 13,
+          "end_line": 17,
+          "start_column": 0,
+          "end_column": 1
+        }
+      ],
+      "extraction_status": "resolved",
+      "extraction_reasons": []
+    },
+    "capabilities": [
+      {
+        "capability_id": "cap_21e687fdf2b6",
+        "capability": "file_read",
+        "action": "read_file",
+        "resource": "filesystem",
+        "impact": 2,
+        "confidence": 0.75,
+        "rule_id": "component.capability.file_read",
+        "controls": [],
+        "evidence_refs": [
+          "ev_001",
+          "ev_002"
+        ]
+      },
+      {
+        "capability_id": "cap_cfa9cb907629",
+        "capability": "network_access",
+        "action": "network_request",
+        "resource": "unknown",
+        "impact": 2,
+        "confidence": 0.75,
+        "rule_id": "component.capability.network_access",
+        "controls": [],
+        "evidence_refs": [
+          "ev_003",
+          "ev_004"
+        ]
+      }
+    ],
+    "boundaries": [
+      {
+        "boundary_id": "bnd_527273bb714e",
+        "data_scope": [
+          "filesystem"
+        ],
+        "network_target": [],
+        "credential_use": false,
+        "execution_mode": "network",
+        "evidence_refs": [
+          "ev_005",
+          "ev_006",
+          "ev_007",
+          "ev_008"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_id": "ev_001",
+        "source_span": {
+          "path": "agent.py",
+          "start_line": 6,
+          "end_line": 6,
+          "start_column": 11,
+          "end_column": 39
+        },
+        "masked_excerpt": "open(path, encoding=\"utf-8\")",
+        "details": {
+          "symbol": "open",
+          "parser": "python-tool-static",
+          "tool": "read_file",
+          "tool_kind": "function",
+          "impl_module": "",
+          "rule_version": "2026.09.13"
+        }
+      },
+      {
+        "evidence_id": "ev_002",
+        "source_span": {
+          "path": "agent.py",
+          "start_line": 13,
+          "end_line": 17,
+          "start_column": 0,
+          "end_column": 1
+        },
+        "masked_excerpt": "agent = create_agent(\n    \"****\",\n    tools=[read_file, search_web],\n    system_prompt=\"****\",\n)",
+        "details": {
+          "agent": "agent",
+          "tool": "read_file",
+          "binding_kind": "constructor_argument",
+          "parser": "python-agent-static",
+          "rule_version": "2026.09.13"
+        }
+      },
+      {
+        "evidence_id": "ev_003",
+        "source_span": {
+          "path": "agent.py",
+          "start_line": 10,
+          "end_line": 10,
+          "start_column": 11,
+          "end_column": 74
+        },
+        "masked_excerpt": "requests.get(\"****\", params={\"q\": query})",
+        "details": {
+          "symbol": "requests.get",
+          "parser": "python-tool-static",
+          "tool": "search_web",
+          "tool_kind": "function",
+          "impl_module": "",
+          "rule_version": "2026.09.13"
+        }
+      },
+      {
+        "evidence_id": "ev_004",
+        "source_span": {
+          "path": "agent.py",
+          "start_line": 13,
+          "end_line": 17,
+          "start_column": 0,
+          "end_column": 1
+        },
+        "masked_excerpt": "agent = create_agent(\n    \"****\",\n    tools=[read_file, search_web],\n    system_prompt=\"****\",\n)",
+        "details": {
+          "agent": "agent",
+          "tool": "search_web",
+          "binding_kind": "constructor_argument",
+          "parser": "python-agent-static",
+          "rule_version": "2026.09.13"
+        }
+      },
+      {
+        "evidence_id": "ev_005",
+        "source_span": {
+          "path": "agent.py",
+          "start_line": 6,
+          "end_line": 6,
+          "start_column": 11,
+          "end_column": 39
+        },
+        "masked_excerpt": "open(path, encoding=\"utf-8\")",
+        "details": {
+          "symbol": "open",
+          "parser": "python-tool-static",
+          "tool": "read_file",
+          "tool_kind": "function",
+          "impl_module": "",
+          "rule_version": "2026.09.13"
+        }
+      },
+      {
+        "evidence_id": "ev_006",
+        "source_span": {
+          "path": "agent.py",
+          "start_line": 13,
+          "end_line": 17,
+          "start_column": 0,
+          "end_column": 1
+        },
+        "masked_excerpt": "agent = create_agent(\n    \"****\",\n    tools=[read_file, search_web],\n    system_prompt=\"****\",\n)",
+        "details": {
+          "agent": "agent",
+          "tool": "read_file",
+          "binding_kind": "constructor_argument",
+          "parser": "python-agent-static",
+          "rule_version": "2026.09.13"
+        }
+      },
+      {
+        "evidence_id": "ev_007",
+        "source_span": {
+          "path": "agent.py",
+          "start_line": 10,
+          "end_line": 10,
+          "start_column": 11,
+          "end_column": 74
+        },
+        "masked_excerpt": "requests.get(\"****\", params={\"q\": query})",
+        "details": {
+          "symbol": "requests.get",
+          "parser": "python-tool-static",
+          "tool": "search_web",
+          "tool_kind": "function",
+          "impl_module": "",
+          "rule_version": "2026.09.13"
+        }
+      },
+      {
+        "evidence_id": "ev_008",
+        "source_span": {
+          "path": "agent.py",
+          "start_line": 13,
+          "end_line": 17,
+          "start_column": 0,
+          "end_column": 1
+        },
+        "masked_excerpt": "agent = create_agent(\n    \"****\",\n    tools=[read_file, search_web],\n    system_prompt=\"****\",\n)",
+        "details": {
+          "agent": "agent",
+          "tool": "search_web",
+          "binding_kind": "constructor_argument",
+          "parser": "python-agent-static",
+          "rule_version": "2026.09.13"
+        }
+      }
+    ],
+    "parser": {
+      "status": "success",
+      "version": "component-parser-1.0",
+      "warnings": []
+    }
+  }
+]

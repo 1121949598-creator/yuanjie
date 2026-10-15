@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0",
+  "scan_id": "synthetic-install-001",
+  "scene": "install_precheck",
+  "component": {
+    "component_id": "cmp_markdown_organizer",
+    "component_type": "skill",
+    "name": "Markdown Organizer",
+    "declared_purpose": "整理用户主动选择目录中的 Markdown 文档并生成本地索引。",
+    "source_spans": [
+      {
+        "path": "SKILL.md",
+        "start_line": 2,
+        "end_line": 4,
+        "start_column": 0,
+        "end_column": 28
+      }
+    ],
+    "extraction_status": "resolved",
+    "extraction_reasons": []
+  },
+  "capabilities": [
+    {
+      "capability_id": "cap_file_read_001",
+      "capability": "file_read",
+      "action": "read_markdown_files",
+      "resource": "user_selected_markdown_directory",
+      "impact": 2,
+      "confidence": 0.96,
+      "rule_id": "component.capability.file_read",
+      "controls": [
+        "user_selected_path",
+        "markdown_extension_allowlist"
+      ],
+      "evidence_refs": [
+        "ev_001"
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "boundary_id": "bnd_001",
+      "data_scope": [
+        "user_selected_markdown_directory"
+      ],
+      "network_target": [],
+      "credential_use": false,
+      "execution_mode": "none",
+      "evidence_refs": [
+        "ev_001",
+        "ev_002"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "ev_001",
+      "source_span": {
+        "path": "scripts/index_notes.py",
+        "start_line": 12,
+        "end_line": 14,
+        "start_column": 4,
+        "end_column": 42
+      },
+      "masked_excerpt": "selected_dir.glob(\"*.md\")",
+      "details": {
+        "symbol": "Path.glob",
+        "parser": "skill-python-static",
+        "rule_version": "1.0"
+      }
+    },
+    {
+      "evidence_id": "ev_002",
+      "source_span": {
+        "path": "SKILL.md",
+        "start_line": 8,
+        "end_line": 9,
+        "start_column": 0,
+        "end_column": 35
+      },
+      "masked_excerpt": "仅处理用户主动选择的 Markdown 目录。",
+      "details": {
+        "symbol": "declared_scope",
+        "parser": "skill-markdown",
+        "rule_version": "1.0"
+      }
+    }
+  ],
+  "parser": {
+    "status": "success",
+    "version": "component-parser-1.0",
+    "warnings": []
+  }
+}

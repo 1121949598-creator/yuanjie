@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}许可证评估详情 · {{project_name}} · 源界{% endblock %}
+{% block content %}
+<div class="license-page" data-license-detail data-scan-id="{{scan_id}}" data-assessment-id="{{assessment_id}}">
+  <p><a id="license-back" href="/scans/{{scan_id}}/licenses">← 返回许可证与依赖</a></p>
+  <div id="license-loading" class="loading-state" role="status" aria-live="polite"><span class="loading-dot" aria-hidden="true"></span>正在读取许可证评估…</div>
+  <div id="license-error" class="notice error" role="alert" hidden></div>
+  <div id="license-detail-content" hidden>
+    <div class="detail-hero">
+      <div><p class="eyebrow">LICENSE ASSESSMENT</p><p class="muted detail-kicker">依赖包</p><h1 id="detail-package-name">未知依赖包</h1><p id="detail-license-expression" class="license-expression">Unknown</p></div>
+      <div id="detail-badges" class="badge-group" aria-label="评估状态"></div>
+    </div>
+    <div id="license-notice" class="notice" role="status" hidden></div>
+    <div id="special-guidance" class="notice warning" hidden></div>
+
+    <div class="detail-grid">
+      <section class="detail-card" aria-labelledby="assessment-heading"><h2 id="assessment-heading">评估</h2><dl id="assessment-list" class="metadata-list"></dl></section>
+      <section class="detail-card" aria-labelledby="package-heading"><h2 id="package-heading">依赖包</h2><dl id="package-list" class="metadata-list"></dl></section>
+      <section class="detail-card detail-wide" aria-labelledby="expression-heading"><h2 id="expression-heading">许可证表达式</h2><dl id="normalization-list" class="metadata-list"></dl><div id="exception-list"></div></section>
+      <section class="detail-card" aria-labelledby="finding-heading"><h2 id="finding-heading">关联发现</h2><div id="finding-list" class="detail-list"></div></section>
+      <section class="detail-card" aria-labelledby="provider-heading"><h2 id="provider-heading">检测来源</h2><div id="provider-list" class="detail-list"></div></section>
+      <section class="detail-card detail-wide" aria-labelledby="guidance-heading"><h2 id="guidance-heading">审核提示</h2><p id="review-guidance"></p></section>
+    </div>
+    <p class="legal-note">自动化分析结果仅用于工程合规风险提示，不构成法律意见。</p>
+  </div>
+</div>
+<script type="module" src="/static/license-pages.js"></script>
+{% endblock %}

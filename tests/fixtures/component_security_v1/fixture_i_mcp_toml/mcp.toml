@@ -1,0 +1,7 @@
+[mcpServers.toml_notes]
+command = "python"
+args = ["server.py"]
+env = { NOTES_TOKEN = "sk-toml-placeholder-not-real" }
+
+[mcpServers.toml_remote]
+url = "https://toml-search.example.com/sse"

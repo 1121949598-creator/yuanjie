@@ -1,0 +1,340 @@
+[
+  {
+    "schema_version": "1.0",
+    "scan_id": "handoff-agent_multi",
+    "scene": "release_precheck",
+    "component": {
+      "component_id": "component_b3e41efa8148",
+      "component_type": "agent",
+      "name": "reader",
+      "declared_purpose": "Read a selected file.",
+      "source_spans": [
+        {
+          "path": "agents.py",
+          "start_line": 5,
+          "end_line": 5,
+          "start_column": 0,
+          "end_column": 94
+        }
+      ],
+      "extraction_status": "resolved",
+      "extraction_reasons": []
+    },
+    "capabilities": [
+      {
+        "capability_id": "cap_19d6af4fbda1",
+        "capability": "file_read",
+        "action": "read_read_text",
+        "resource": "filesystem",
+        "impact": 2,
+        "confidence": 0.85,
+        "rule_id": "component.capability.file_read",
+        "controls": [
+          "user_selected_path"
+        ],
+        "evidence_refs": [
+          "ev_001",
+          "ev_002",
+          "ev_003"
+        ]
+      }
+    ],
+    "boundaries": [
+      {
+        "boundary_id": "bnd_88af860d19b4",
+        "data_scope": [
+          "filesystem"
+        ],
+        "network_target": [],
+        "credential_use": false,
+        "execution_mode": "filesystem",
+        "evidence_refs": [
+          "ev_004",
+          "ev_005",
+          "ev_006"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_id": "ev_001",
+        "source_span": {
+          "path": "tools.py",
+          "start_line": 6,
+          "end_line": 6,
+          "start_column": 11,
+          "end_column": 33
+        },
+        "masked_excerpt": "Path(path).read_text()",
+        "details": {
+          "symbol": "Path.read_text",
+          "parser": "python-tool-static",
+          "tool": "read_tool",
+          "tool_kind": "function",
+          "impl_module": "tools",
+          "rule_version": "2026.09.13"
+        }
+      },
+      {
+        "evidence_id": "ev_002",
+        "source_span": {
+          "path": "agents.py",
+          "start_line": 5,
+          "end_line": 5,
+          "start_column": 0,
+          "end_column": 94
+        },
+        "masked_excerpt": "reader = create_agent(\"****\", tools=[read_tool], system_prompt=\"****\")",
+        "details": {
+          "agent": "reader",
+          "tool": "read_tool",
+          "binding_kind": "constructor_argument",
+          "parser": "python-agent-static",
+          "rule_version": "2026.09.13"
+        }
+      },
+      {
+        "evidence_id": "ev_003",
+        "source_span": {
+          "path": "agents.py",
+          "start_line": 3,
+          "end_line": 3,
+          "start_column": 0,
+          "end_column": 0
+        },
+        "masked_excerpt": "from tools import read_tool, shell_tool",
+        "details": {
+          "parser": "python-import-static",
+          "name": "read_tool",
+          "rule_version": "2026.09.13"
+        }
+      },
+      {
+        "evidence_id": "ev_004",
+        "source_span": {
+          "path": "tools.py",
+          "start_line": 6,
+          "end_line": 6,
+          "start_column": 11,
+          "end_column": 33
+        },
+        "masked_excerpt": "Path(path).read_text()",
+        "details": {
+          "symbol": "Path.read_text",
+          "parser": "python-tool-static",
+          "tool": "read_tool",
+          "tool_kind": "function",
+          "impl_module": "tools",
+          "rule_version": "2026.09.13"
+        }
+      },
+      {
+        "evidence_id": "ev_005",
+        "source_span": {
+          "path": "agents.py",
+          "start_line": 5,
+          "end_line": 5,
+          "start_column": 0,
+          "end_column": 94
+        },
+        "masked_excerpt": "reader = create_agent(\"****\", tools=[read_tool], system_prompt=\"****\")",
+        "details": {
+          "agent": "reader",
+          "tool": "read_tool",
+          "binding_kind": "constructor_argument",
+          "parser": "python-agent-static",
+          "rule_version": "2026.09.13"
+        }
+      },
+      {
+        "evidence_id": "ev_006",
+        "source_span": {
+          "path": "agents.py",
+          "start_line": 3,
+          "end_line": 3,
+          "start_column": 0,
+          "end_column": 0
+        },
+        "masked_excerpt": "from tools import read_tool, shell_tool",
+        "details": {
+          "parser": "python-import-static",
+          "name": "read_tool",
+          "rule_version": "2026.09.13"
+        }
+      }
+    ],
+    "parser": {
+      "status": "success",
+      "version": "component-parser-1.0",
+      "warnings": []
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "scan_id": "handoff-agent_multi",
+    "scene": "release_precheck",
+    "component": {
+      "component_id": "component_640fc9e10e6d",
+      "component_type": "agent",
+      "name": "admin",
+      "declared_purpose": "Run admin shell commands.",
+      "source_spans": [
+        {
+          "path": "agents.py",
+          "start_line": 7,
+          "end_line": 7,
+          "start_column": 0,
+          "end_column": 98
+        }
+      ],
+      "extraction_status": "resolved",
+      "extraction_reasons": []
+    },
+    "capabilities": [
+      {
+        "capability_id": "cap_001a3de3cbe0",
+        "capability": "shell_execute",
+        "action": "execute_shell",
+        "resource": "local_operating_system",
+        "impact": 5,
+        "confidence": 0.85,
+        "rule_id": "component.capability.shell_execute",
+        "controls": [],
+        "evidence_refs": [
+          "ev_001",
+          "ev_002",
+          "ev_003"
+        ]
+      }
+    ],
+    "boundaries": [
+      {
+        "boundary_id": "bnd_3f40e5e1f3ee",
+        "data_scope": [
+          "local_operating_system"
+        ],
+        "network_target": [],
+        "credential_use": false,
+        "execution_mode": "shell",
+        "evidence_refs": [
+          "ev_004",
+          "ev_005",
+          "ev_006"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_id": "ev_001",
+        "source_span": {
+          "path": "tools.py",
+          "start_line": 10,
+          "end_line": 10,
+          "start_column": 11,
+          "end_column": 58
+        },
+        "masked_excerpt": "subprocess.run(command, shell=True, check=True)",
+        "details": {
+          "symbol": "subprocess.run",
+          "parser": "python-tool-static",
+          "tool": "shell_tool",
+          "tool_kind": "function",
+          "impl_module": "tools",
+          "rule_version": "2026.09.13"
+        }
+      },
+      {
+        "evidence_id": "ev_002",
+        "source_span": {
+          "path": "agents.py",
+          "start_line": 7,
+          "end_line": 7,
+          "start_column": 0,
+          "end_column": 98
+        },
+        "masked_excerpt": "admin = create_agent(\"****\", tools=[shell_tool], system_prompt=\"****\")",
+        "details": {
+          "agent": "admin",
+          "tool": "shell_tool",
+          "binding_kind": "constructor_argument",
+          "parser": "python-agent-static",
+          "rule_version": "2026.09.13"
+        }
+      },
+      {
+        "evidence_id": "ev_003",
+        "source_span": {
+          "path": "agents.py",
+          "start_line": 3,
+          "end_line": 3,
+          "start_column": 0,
+          "end_column": 0
+        },
+        "masked_excerpt": "from tools import read_tool, shell_tool",
+        "details": {
+          "parser": "python-import-static",
+          "name": "shell_tool",
+          "rule_version": "2026.09.13"
+        }
+      },
+      {
+        "evidence_id": "ev_004",
+        "source_span": {
+          "path": "tools.py",
+          "start_line": 10,
+          "end_line": 10,
+          "start_column": 11,
+          "end_column": 58
+        },
+        "masked_excerpt": "subprocess.run(command, shell=True, check=True)",
+        "details": {
+          "symbol": "subprocess.run",
+          "parser": "python-tool-static",
+          "tool": "shell_tool",
+          "tool_kind": "function",
+          "impl_module": "tools",
+          "rule_version": "2026.09.13"
+        }
+      },
+      {
+        "evidence_id": "ev_005",
+        "source_span": {
+          "path": "agents.py",
+          "start_line": 7,
+          "end_line": 7,
+          "start_column": 0,
+          "end_column": 98
+        },
+        "masked_excerpt": "admin = create_agent(\"****\", tools=[shell_tool], system_prompt=\"****\")",
+        "details": {
+          "agent": "admin",
+          "tool": "shell_tool",
+          "binding_kind": "constructor_argument",
+          "parser": "python-agent-static",
+          "rule_version": "2026.09.13"
+        }
+      },
+      {
+        "evidence_id": "ev_006",
+        "source_span": {
+          "path": "agents.py",
+          "start_line": 3,
+          "end_line": 3,
+          "start_column": 0,
+          "end_column": 0
+        },
+        "masked_excerpt": "from tools import read_tool, shell_tool",
+        "details": {
+          "parser": "python-import-static",
+          "name": "shell_tool",
+          "rule_version": "2026.09.13"
+        }
+      }
+    ],
+    "parser": {
+      "status": "success",
+      "version": "component-parser-1.0",
+      "warnings": []
+    }
+  }
+]

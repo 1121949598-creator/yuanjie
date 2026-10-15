@@ -1,0 +1,15 @@
+{
+  "headers": [{"tool_name": "scancode-toolkit", "tool_version": "32.4.1", "output_format_version": "3.0.0", "errors": []}],
+  "packages": [
+    {"type": "pypi", "name": "foo", "version": "1.0", "purl": "pkg:pypi/foo@1.0", "package_uid": "pkg:pypi/foo@1.0?uuid=synthetic", "datafile_paths": ["pyproject.toml"], "declared_license_expression": "mit", "declared_license_expression_spdx": "MIT"},
+    {"type": "pypi", "name": "synthetic-gpl", "version": "2.0", "purl": "pkg:pypi/synthetic-gpl@2.0", "datafile_paths": ["requirements.txt"], "declared_license_expression_spdx": "GPL-3.0-only"},
+    {"type": "pypi", "name": "synthetic-unknown", "version": "0.1", "purl": "pkg:pypi/synthetic-unknown@0.1", "datafile_paths": ["requirements.txt"], "declared_license_expression": null}
+  ],
+  "dependencies": [{"purl": "pkg:pypi/foo@1.0", "extracted_requirement": "==1.0", "scope": "runtime", "is_direct": true, "datafile_path": "requirements.txt"}],
+  "files": [
+    {"path": "LICENSE", "type": "file", "for_packages": ["pkg:pypi/foo@1.0?uuid=synthetic"], "license_detections": [{"license_expression": "mit", "license_expression_spdx": "MIT", "matches": [{"start_line": 2, "end_line": 8, "score": 100.0, "matched_text": "RAW-UPSTREAM-TEXT-DO-NOT-PERSIST"}]}], "scan_errors": []},
+    {"path": "requirements.txt", "type": "file", "license_detections": []},
+    {"path": "pyproject.toml", "type": "file", "license_detections": []}
+  ],
+  "unrelated": {"url": "git+https://synthetic_user:SyntheticToken9@example.com/private/repo.git", "raw_marker": "RAW-UPSTREAM-TEXT-DO-NOT-PERSIST"}
+}

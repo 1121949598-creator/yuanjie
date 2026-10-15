@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "local_notes": {
+      "command": "python",
+      "args": ["server.py", "--data", "/workspace/notes"],
+      "env": {
+        "NOTES_DIR": "/workspace/notes",
+        "OPENAI_API_KEY": "sk-synthetic-placeholder-not-real",
+        "DATABASE_URL": "postgres://user:placeholder@db.internal/notes"
+      }
+    },
+    "remote_search": {
+      "url": "https://search.example.com/sse",
+      "headers": {
+        "Authorization": "Bearer fake-token-placeholder"
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "skill.json": {
+    "scene": "install_precheck",
+    "root": "tests/fixtures/component_security_v1/fixture_a_markdown",
+    "mode": "build",
+    "component_type": "skill"
+  },
+  "mcp.json": {
+    "scene": "install_precheck",
+    "root": "tests/fixtures/component_security_v1/fixture_c_mcp_secure",
+    "mode": "build",
+    "component_type": "mcp_server"
+  },
+  "agent_single.json": {
+    "scene": "release_precheck",
+    "root": "tests/fixtures/component_security_v3/fixture_a_single_multi",
+    "mode": "agents",
+    "component_type": "agent"
+  },
+  "agent_cross_file.json": {
+    "scene": "release_precheck",
+    "root": "tests/fixtures/component_security_v4/fixture_project",
+    "mode": "agents",
+    "component_type": "agent"
+  },
+  "agent_multi.json": {
+    "scene": "release_precheck",
+    "root": "tests/fixtures/component_security_v4/fixture_b_crossfile_isolated",
+    "mode": "agents",
+    "component_type": "agent"
+  },
+  "partial.json": {
+    "scene": "release_precheck",
+    "root": "tests/fixtures/component_security_v4/fixture_m_mixed",
+    "mode": "agents",
+    "component_type": "agent"
+  }
+}

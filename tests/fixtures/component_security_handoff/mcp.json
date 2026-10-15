@@ -1,0 +1,208 @@
+{
+  "schema_version": "1.0",
+  "scan_id": "handoff-mcp",
+  "scene": "install_precheck",
+  "component": {
+    "component_id": "component_327bcb4fa9c1",
+    "component_type": "mcp_server",
+    "name": "mcp",
+    "declared_purpose": "MCP server configuration declares remote or local tool endpoints",
+    "source_spans": [
+      {
+        "path": "mcp.json",
+        "start_line": 1,
+        "end_line": 20,
+        "start_column": 0,
+        "end_column": 0
+      }
+    ],
+    "extraction_status": "resolved",
+    "extraction_reasons": []
+  },
+  "capabilities": [
+    {
+      "capability_id": "cap_731f972be999",
+      "capability": "credential_access",
+      "action": "read_credential",
+      "resource": "process_environment_credentials",
+      "impact": 5,
+      "confidence": 0.0,
+      "rule_id": "component.capability.credential_access",
+      "controls": [],
+      "evidence_refs": [
+        "ev_001"
+      ]
+    },
+    {
+      "capability_id": "cap_d90d4abca2a2",
+      "capability": "network_access",
+      "action": "network_request",
+      "resource": "remote_endpoint",
+      "impact": 2,
+      "confidence": 0.0,
+      "rule_id": "component.capability.network_access",
+      "controls": [],
+      "evidence_refs": [
+        "ev_002"
+      ]
+    },
+    {
+      "capability_id": "cap_f1dd31c4a2f0",
+      "capability": "process_execute",
+      "action": "execute_process",
+      "resource": "local_operating_system",
+      "impact": 4,
+      "confidence": 0.0,
+      "rule_id": "component.capability.process_execute",
+      "controls": [],
+      "evidence_refs": [
+        "ev_003"
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "boundary_id": "bnd_95a4b02f3a14",
+      "data_scope": [],
+      "network_target": [],
+      "credential_use": true,
+      "execution_mode": "local_process",
+      "evidence_refs": [
+        "ev_004"
+      ]
+    },
+    {
+      "boundary_id": "bnd_93f0bf6ecbf3",
+      "data_scope": [
+        "filesystem"
+      ],
+      "network_target": [],
+      "credential_use": true,
+      "execution_mode": "local_process",
+      "evidence_refs": [
+        "ev_005"
+      ]
+    },
+    {
+      "boundary_id": "bnd_deeb1c13f132",
+      "data_scope": [],
+      "network_target": [
+        "search.example.com"
+      ],
+      "credential_use": false,
+      "execution_mode": "network",
+      "evidence_refs": [
+        "ev_006"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "ev_001",
+      "source_span": {
+        "path": "mcp.json",
+        "start_line": 1,
+        "end_line": 20,
+        "start_column": 0,
+        "end_column": 0
+      },
+      "masked_excerpt": "credential env refs OPENAI_API_KEY",
+      "details": {
+        "server": "local_notes",
+        "symbol": "mcp.env",
+        "parser": "mcp-config-static",
+        "rule_version": "2026.09.13"
+      }
+    },
+    {
+      "evidence_id": "ev_002",
+      "source_span": {
+        "path": "mcp.json",
+        "start_line": 1,
+        "end_line": 20,
+        "start_column": 0,
+        "end_column": 0
+      },
+      "masked_excerpt": "remote endpoint search.example.com",
+      "details": {
+        "server": "remote_search",
+        "symbol": "mcp.url",
+        "parser": "mcp-config-static",
+        "rule_version": "2026.09.13"
+      }
+    },
+    {
+      "evidence_id": "ev_003",
+      "source_span": {
+        "path": "mcp.json",
+        "start_line": 1,
+        "end_line": 20,
+        "start_column": 0,
+        "end_column": 0
+      },
+      "masked_excerpt": "launch command python",
+      "details": {
+        "server": "local_notes",
+        "symbol": "mcp.command",
+        "parser": "mcp-config-static",
+        "rule_version": "2026.09.13"
+      }
+    },
+    {
+      "evidence_id": "ev_004",
+      "source_span": {
+        "path": "mcp.json",
+        "start_line": 1,
+        "end_line": 20,
+        "start_column": 0,
+        "end_column": 0
+      },
+      "masked_excerpt": "credential env refs OPENAI_API_KEY",
+      "details": {
+        "server": "local_notes",
+        "symbol": "mcp.env",
+        "parser": "mcp-config-static",
+        "rule_version": "2026.09.13"
+      }
+    },
+    {
+      "evidence_id": "ev_005",
+      "source_span": {
+        "path": "mcp.json",
+        "start_line": 1,
+        "end_line": 20,
+        "start_column": 0,
+        "end_column": 0
+      },
+      "masked_excerpt": "launch command python",
+      "details": {
+        "server": "local_notes",
+        "symbol": "mcp.command",
+        "parser": "mcp-config-static",
+        "rule_version": "2026.09.13"
+      }
+    },
+    {
+      "evidence_id": "ev_006",
+      "source_span": {
+        "path": "mcp.json",
+        "start_line": 1,
+        "end_line": 20,
+        "start_column": 0,
+        "end_column": 0
+      },
+      "masked_excerpt": "remote endpoint search.example.com",
+      "details": {
+        "server": "remote_search",
+        "symbol": "mcp.url",
+        "parser": "mcp-config-static",
+        "rule_version": "2026.09.13"
+      }
+    }
+  ],
+  "parser": {
+    "status": "success",
+    "version": "component-parser-1.0",
+    "warnings": []
+  }
+}

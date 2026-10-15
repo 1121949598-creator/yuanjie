@@ -1,0 +1,17 @@
+import { chromium } from 'playwright';
+import fs from 'node:fs/promises';
+const out='E:/GPT工作区/AIC-安全/UI设计/评论修正-v5.1';await fs.mkdir(out,{recursive:true});
+const browser=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});
+const page=await browser.newPage({viewport:{width:973,height:704}});const errors=[];page.on('pageerror',e=>errors.push(e.message));
+await page.goto('http://127.0.0.1:8002/app/?v=5.1#/scan/c5d76ba9ad884a8e/components?mode=download');
+await page.getByText('尚无可展示的关系判断',{exact:true}).waitFor();
+const text=await page.locator('.component-coverage').innerText();
+if(!text.includes('未提取到可判断的静态能力')||text.includes('0 / 0'))throw Error('Coverage message was not fixed');
+const empty=page.locator('.component-security .empty-state .watercolor-cat image');
+const pet=page.locator('.task-pet .watercolor-cat image');
+if(await empty.getAttribute('href')!==await pet.getAttribute('href'))throw Error('Mascot artwork differs');
+await page.locator('.component-coverage').screenshot({path:out+'/判断缺口说明.png'});
+await page.locator('.component-security .empty-state').screenshot({path:out+'/同款小猫.png'});
+await page.screenshot({path:out+'/当前页面.png',fullPage:true});
+await fs.writeFile(out+'/验收.json',JSON.stringify({passed:!errors.length,errors,matchingMascot:true,zeroAssessmentMessageFixed:true},null,2));
+console.log(JSON.stringify({passed:!errors.length,errors}));await browser.close();if(errors.length)process.exitCode=1;

@@ -1,0 +1,6 @@
+# Static fixture only; do not start containers.
+services:
+  demo:
+    image: synthetic-not-runnable
+    environment:
+      DATABASE_URL: "mysql://admin:DbPass927x@localhost/demo"

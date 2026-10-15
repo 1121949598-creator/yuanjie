@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}许可证与依赖 · {{project_name}} · 源界{% endblock %}
+{% block content %}
+<div class="license-page" data-license-overview data-scan-id="{{scan_id}}">
+  <p><a href="/scans/{{scan_id}}">← 返回项目</a></p>
+  <div class="module-header">
+    <div><p class="eyebrow">LICENSE INVENTORY</p><h1>许可证与依赖</h1><p class="muted">{{project_name}}</p></div>
+    <span id="module-status" class="pill status-pending">正在加载</span>
+  </div>
+
+  <div id="license-loading" class="loading-state" role="status" aria-live="polite">
+    <span class="loading-dot" aria-hidden="true"></span>正在读取已保存的许可证库存…
+  </div>
+  <div id="license-error" class="notice error" role="alert" hidden></div>
+  <div id="license-notice" class="notice" role="status" hidden></div>
+
+  <div id="license-content" hidden>
+    <div class="stats license-stats" aria-label="许可证统计">
+      <div><b id="summary-packages">0</b><span>依赖包</span></div>
+      <div><b id="summary-dependencies">0</b><span>依赖关系</span></div>
+      <div><b id="summary-licenses">0</b><span>许可证记录</span></div>
+      <div><b id="summary-review">0</b><span>待人工审核</span></div>
+    </div>
+
+    <section aria-labelledby="classification-title">
+      <div class="section-heading"><div><h2 id="classification-title">风险分类</h2><p class="muted">工程合规审核优先级，不代表法律结论。</p></div></div>
+      <div id="classification-summary" class="classification-summary"></div>
+    </section>
+
+    <section aria-labelledby="assessment-title">
+      <div class="section-heading"><div><h2 id="assessment-title">许可证评估</h2><p id="result-count" class="muted"></p></div></div>
+      <form id="license-filters" class="filter-bar" method="get">
+        <label>依赖包<input name="package_name" maxlength="256" placeholder="按包名搜索"></label>
+        <label>许可证表达式<input name="license_expression" maxlength="256" placeholder="例如 GPL-3.0-only"></label>
+        <label>许可证类别<select name="classification"><option value="">全部</option><option value="permissive">宽松许可证</option><option value="weak_copyleft">弱 Copyleft</option><option value="strong_copyleft">强 Copyleft</option><option value="network_copyleft">网络 Copyleft</option><option value="unknown">未识别 / 需审核</option><option value="invalid">无效 SPDX 表达式</option></select></label>
+        <label>风险等级<select name="severity"><option value="">全部</option><option value="critical">严重</option><option value="high">高</option><option value="medium">中</option><option value="low">低</option><option value="info">提示</option></select></label>
+        <label>审核状态<select name="manual_review_required"><option value="">全部</option><option value="true">待人工审核</option><option value="false">无需额外审核</option></select></label>
+        <label>文件位置<input name="file_path" maxlength="256" placeholder="相对路径"></label>
+        <label>每页数量<select name="page_size"><option value="20">20</option><option value="50">50</option><option value="100">100</option></select></label>
+        <div class="filter-actions"><button type="submit">应用筛选</button><button id="clear-filters" class="button secondary" type="button">清除</button></div>
+      </form>
+
+      <div class="table-scroll" tabindex="0" aria-label="许可证评估表，可横向滚动">
+        <table>
+          <thead><tr><th>依赖包</th><th>版本</th><th>许可证</th><th>分类</th><th>风险</th><th>审核</th><th>位置</th><th><span class="sr-only">操作</span></th></tr></thead>
+          <tbody id="license-rows"></tbody>
+        </table>
+      </div>
+      <div id="license-empty" class="empty-state" hidden></div>
+      <nav id="license-pagination" class="pagination" aria-label="许可证评估分页" hidden>
+        <button id="previous-page" class="button secondary" type="button" aria-label="上一页">← 上一页</button>
+        <span id="page-label" aria-live="polite"></span>
+        <button id="next-page" class="button secondary" type="button" aria-label="下一页">下一页 →</button>
+      </nav>
+    </section>
+    <p class="legal-note">自动化分析结果仅用于工程合规风险提示，不构成法律意见。</p>
+  </div>
+</div>
+<script type="module" src="/static/license-pages.js"></script>
+{% endblock %}

@@ -1,0 +1,20 @@
+{
+  "repository": {"vcs": {"type": "Git", "url": "https://example.com/synthetic", "revision": "synthetic"}, "config": {}},
+  "analyzer": {
+    "start_time": "2026-09-09T00:00:00Z", "end_time": "2026-09-09T00:00:01Z",
+    "environment": {"ort_version": "50.0.0", "variables": {"SECRET": "RAW-UPSTREAM-TEXT-DO-NOT-PERSIST"}},
+    "config": {},
+    "result": {
+      "projects": [{"id": "PIP::synthetic-project:1.0", "definition_file_path": "requirements.txt", "declared_licenses": ["MIT"], "scope_names": ["runtime"], "vcs": {"type": "", "url": "", "revision": "", "path": ""}, "homepage_url": ""}],
+      "packages": [{"id": "PyPI::foo:1.0", "purl": "pkg:pypi/foo@1.0", "declared_licenses": ["MIT"], "declared_licenses_processed": {"spdx_expression": "MIT"}, "concluded_license": "MIT", "description": "RAW-UPSTREAM-TEXT-DO-NOT-PERSIST", "homepage_url": "", "binary_artifact": {"url": "", "hash": {"value": "", "algorithm": ""}}, "source_artifact": {"url": "", "hash": {"value": "", "algorithm": ""}}, "vcs": {"type": "", "url": "", "revision": "", "path": ""}}],
+      "dependency_graphs": {"PIP": {"packages": ["PyPI::foo:1.0"], "nodes": [{"pkg": 0}], "edges": [], "scopes": {":synthetic-project:1.0:runtime": [{"root": 0}]}}}
+    }
+  },
+  "scanner": {
+    "start_time": "2026-09-09T00:00:00Z", "end_time": "2026-09-09T00:00:01Z",
+    "environment": {"ort_version": "50.0.0"}, "config": {},
+    "provenances": [{"id": "PyPI::foo:1.0", "package_provenance": {"vcs_info": {"type": "Git", "url": "git+https://synthetic_user:SyntheticToken9@example.com/private/repo.git", "revision": "synthetic", "path": ""}, "resolved_revision": "synthetic"}}],
+    "scan_results": [{"provenance": {"vcs_info": {"type": "Git", "url": "git+https://synthetic_user:SyntheticToken9@example.com/private/repo.git", "revision": "synthetic", "path": ""}, "resolved_revision": "synthetic"}, "scanner": {"name": "ScanCode", "version": "32.4.1", "configuration": "RAW-UPSTREAM-TEXT-DO-NOT-PERSIST"}, "summary": {"start_time": "2026-09-09T00:00:00Z", "end_time": "2026-09-09T00:00:01Z", "licenses": [{"license": "MIT", "location": {"path": "LICENSE", "start_line": 2, "end_line": 8}, "score": 100.0}]}}],
+    "scanners": {"PyPI::foo:1.0": ["ScanCode"]}, "files": []
+  }
+}

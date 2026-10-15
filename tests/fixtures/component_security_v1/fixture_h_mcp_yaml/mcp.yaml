@@ -1,0 +1,13 @@
+mcpServers:
+  yaml_notes:
+    command: python
+    args:
+      - server.py
+      - --data
+      - /workspace/notes
+    env:
+      YAML_TOKEN: "sk-yaml-placeholder-not-real"
+  yaml_remote:
+    url: "https://yaml-search.example.com/sse"
+    headers:
+      Authorization: "Bearer yaml-fake-token"

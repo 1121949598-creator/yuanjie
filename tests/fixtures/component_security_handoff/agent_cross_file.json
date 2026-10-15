@@ -1,0 +1,222 @@
+[
+  {
+    "schema_version": "1.0",
+    "scan_id": "handoff-agent_cross_file",
+    "scene": "release_precheck",
+    "component": {
+      "component_id": "component_8b6a91edf54d",
+      "component_type": "agent",
+      "name": "researcher",
+      "declared_purpose": "Research local files and the web.",
+      "source_spans": [
+        {
+          "path": "agents.py",
+          "start_line": 5,
+          "end_line": 9,
+          "start_column": 0,
+          "end_column": 1
+        }
+      ],
+      "extraction_status": "resolved",
+      "extraction_reasons": []
+    },
+    "capabilities": [
+      {
+        "capability_id": "cap_dcc14a4649f4",
+        "capability": "file_read",
+        "action": "read_read_text",
+        "resource": "filesystem",
+        "impact": 2,
+        "confidence": 0.85,
+        "rule_id": "component.capability.file_read",
+        "controls": [],
+        "evidence_refs": [
+          "ev_001",
+          "ev_002",
+          "ev_003"
+        ]
+      },
+      {
+        "capability_id": "cap_868e9964f84e",
+        "capability": "network_access",
+        "action": "network_request",
+        "resource": "unknown",
+        "impact": 2,
+        "confidence": 0.65,
+        "rule_id": "component.capability.network_access",
+        "controls": [],
+        "evidence_refs": [
+          "ev_004"
+        ]
+      }
+    ],
+    "boundaries": [
+      {
+        "boundary_id": "bnd_580fdd1a4c8c",
+        "data_scope": [
+          "filesystem"
+        ],
+        "network_target": [],
+        "credential_use": false,
+        "execution_mode": "network",
+        "evidence_refs": [
+          "ev_005",
+          "ev_006",
+          "ev_007",
+          "ev_008"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_id": "ev_001",
+        "source_span": {
+          "path": "tools/file_tools.py",
+          "start_line": 6,
+          "end_line": 6,
+          "start_column": 11,
+          "end_column": 33
+        },
+        "masked_excerpt": "Path(path).read_text()",
+        "details": {
+          "symbol": "Path.read_text",
+          "parser": "python-tool-static",
+          "tool": "ALL_TOOLS",
+          "tool_kind": "function",
+          "impl_module": "tools.file_tools",
+          "rule_version": "2026.09.13"
+        }
+      },
+      {
+        "evidence_id": "ev_002",
+        "source_span": {
+          "path": "agents.py",
+          "start_line": 5,
+          "end_line": 9,
+          "start_column": 0,
+          "end_column": 1
+        },
+        "masked_excerpt": "researcher = create_agent(\n    \"****\",\n    tools=ALL_TOOLS,\n    system_prompt=\"****\",\n)",
+        "details": {
+          "agent": "researcher",
+          "tool": "ALL_TOOLS",
+          "binding_kind": "constructor_argument",
+          "parser": "python-agent-static",
+          "rule_version": "2026.09.13"
+        }
+      },
+      {
+        "evidence_id": "ev_003",
+        "source_span": {
+          "path": "agents.py",
+          "start_line": 3,
+          "end_line": 3,
+          "start_column": 0,
+          "end_column": 0
+        },
+        "masked_excerpt": "from tools import ALL_TOOLS",
+        "details": {
+          "parser": "python-import-static",
+          "name": "ALL_TOOLS",
+          "rule_version": "2026.09.13"
+        }
+      },
+      {
+        "evidence_id": "ev_004",
+        "source_span": {
+          "path": "tools/web_tools.py",
+          "start_line": 5,
+          "end_line": 5,
+          "start_column": 11,
+          "end_column": 74
+        },
+        "masked_excerpt": "requests.get(\"****\", params={\"q\": query})",
+        "details": {
+          "symbol": "requests.get",
+          "parser": "python-tool-static",
+          "tool": "ALL_TOOLS",
+          "tool_kind": "function",
+          "impl_module": "tools.web_tools",
+          "rule_version": "2026.09.13"
+        }
+      },
+      {
+        "evidence_id": "ev_005",
+        "source_span": {
+          "path": "tools/file_tools.py",
+          "start_line": 6,
+          "end_line": 6,
+          "start_column": 11,
+          "end_column": 33
+        },
+        "masked_excerpt": "Path(path).read_text()",
+        "details": {
+          "symbol": "Path.read_text",
+          "parser": "python-tool-static",
+          "tool": "ALL_TOOLS",
+          "tool_kind": "function",
+          "impl_module": "tools.file_tools",
+          "rule_version": "2026.09.13"
+        }
+      },
+      {
+        "evidence_id": "ev_006",
+        "source_span": {
+          "path": "agents.py",
+          "start_line": 5,
+          "end_line": 9,
+          "start_column": 0,
+          "end_column": 1
+        },
+        "masked_excerpt": "researcher = create_agent(\n    \"****\",\n    tools=ALL_TOOLS,\n    system_prompt=\"****\",\n)",
+        "details": {
+          "agent": "researcher",
+          "tool": "ALL_TOOLS",
+          "binding_kind": "constructor_argument",
+          "parser": "python-agent-static",
+          "rule_version": "2026.09.13"
+        }
+      },
+      {
+        "evidence_id": "ev_007",
+        "source_span": {
+          "path": "agents.py",
+          "start_line": 3,
+          "end_line": 3,
+          "start_column": 0,
+          "end_column": 0
+        },
+        "masked_excerpt": "from tools import ALL_TOOLS",
+        "details": {
+          "parser": "python-import-static",
+          "name": "ALL_TOOLS",
+          "rule_version": "2026.09.13"
+        }
+      },
+      {
+        "evidence_id": "ev_008",
+        "source_span": {
+          "path": "tools/web_tools.py",
+          "start_line": 5,
+          "end_line": 5,
+          "start_column": 11,
+          "end_column": 74
+        },
+        "masked_excerpt": "requests.get(\"****\", params={\"q\": query})",
+        "details": {
+          "symbol": "requests.get",
+          "parser": "python-tool-static",
+          "tool": "ALL_TOOLS",
+          "tool_kind": "function",
+          "impl_module": "tools.web_tools",
+          "rule_version": "2026.09.13"
+        }
+      }
+    ],
+    "parser": {
+      "status": "success",
+      "version": "component-parser-1.0",
+      "warnings": []
+    }
+  }
+]

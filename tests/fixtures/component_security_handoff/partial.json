@@ -1,0 +1,175 @@
+[
+  {
+    "schema_version": "1.0",
+    "scan_id": "handoff-partial",
+    "scene": "release_precheck",
+    "component": {
+      "component_id": "component_e11c274a0c59",
+      "component_type": "agent",
+      "name": "agent",
+      "declared_purpose": "Mixed tools agent.",
+      "source_spans": [
+        {
+          "path": "agent.py",
+          "start_line": 5,
+          "end_line": 5,
+          "start_column": 0,
+          "end_column": 84
+        }
+      ],
+      "extraction_status": "partial",
+      "extraction_reasons": [
+        "cross-file partial: dynamic_tool_collection"
+      ]
+    },
+    "capabilities": [
+      {
+        "capability_id": "cap_21e687fdf2b6",
+        "capability": "file_read",
+        "action": "read_read_text",
+        "resource": "filesystem",
+        "impact": 2,
+        "confidence": 0.85,
+        "rule_id": "component.capability.file_read",
+        "controls": [],
+        "evidence_refs": [
+          "ev_001",
+          "ev_002",
+          "ev_003"
+        ]
+      }
+    ],
+    "boundaries": [
+      {
+        "boundary_id": "bnd_edf9d63f5a5c",
+        "data_scope": [
+          "filesystem"
+        ],
+        "network_target": [],
+        "credential_use": false,
+        "execution_mode": "filesystem",
+        "evidence_refs": [
+          "ev_004",
+          "ev_005",
+          "ev_006"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_id": "ev_001",
+        "source_span": {
+          "path": "tools.py",
+          "start_line": 6,
+          "end_line": 6,
+          "start_column": 11,
+          "end_column": 33
+        },
+        "masked_excerpt": "Path(path).read_text()",
+        "details": {
+          "symbol": "Path.read_text",
+          "parser": "python-tool-static",
+          "tool": "TOOLS",
+          "tool_kind": "function",
+          "impl_module": "tools",
+          "rule_version": "2026.09.13"
+        }
+      },
+      {
+        "evidence_id": "ev_002",
+        "source_span": {
+          "path": "agent.py",
+          "start_line": 5,
+          "end_line": 5,
+          "start_column": 0,
+          "end_column": 84
+        },
+        "masked_excerpt": "agent = create_agent(\"****\", tools=TOOLS, system_prompt=\"****\")",
+        "details": {
+          "agent": "agent",
+          "tool": "TOOLS",
+          "binding_kind": "constructor_argument",
+          "parser": "python-agent-static",
+          "rule_version": "2026.09.13"
+        }
+      },
+      {
+        "evidence_id": "ev_003",
+        "source_span": {
+          "path": "agent.py",
+          "start_line": 3,
+          "end_line": 3,
+          "start_column": 0,
+          "end_column": 0
+        },
+        "masked_excerpt": "from tools import TOOLS",
+        "details": {
+          "parser": "python-import-static",
+          "name": "TOOLS",
+          "rule_version": "2026.09.13"
+        }
+      },
+      {
+        "evidence_id": "ev_004",
+        "source_span": {
+          "path": "tools.py",
+          "start_line": 6,
+          "end_line": 6,
+          "start_column": 11,
+          "end_column": 33
+        },
+        "masked_excerpt": "Path(path).read_text()",
+        "details": {
+          "symbol": "Path.read_text",
+          "parser": "python-tool-static",
+          "tool": "TOOLS",
+          "tool_kind": "function",
+          "impl_module": "tools",
+          "rule_version": "2026.09.13"
+        }
+      },
+      {
+        "evidence_id": "ev_005",
+        "source_span": {
+          "path": "agent.py",
+          "start_line": 5,
+          "end_line": 5,
+          "start_column": 0,
+          "end_column": 84
+        },
+        "masked_excerpt": "agent = create_agent(\"****\", tools=TOOLS, system_prompt=\"****\")",
+        "details": {
+          "agent": "agent",
+          "tool": "TOOLS",
+          "binding_kind": "constructor_argument",
+          "parser": "python-agent-static",
+          "rule_version": "2026.09.13"
+        }
+      },
+      {
+        "evidence_id": "ev_006",
+        "source_span": {
+          "path": "agent.py",
+          "start_line": 3,
+          "end_line": 3,
+          "start_column": 0,
+          "end_column": 0
+        },
+        "masked_excerpt": "from tools import TOOLS",
+        "details": {
+          "parser": "python-import-static",
+          "name": "TOOLS",
+          "rule_version": "2026.09.13"
+        }
+      }
+    ],
+    "parser": {
+      "status": "partial",
+      "version": "component-parser-1.0",
+      "warnings": [
+        "dynamic_tool_collection",
+        "extraction:partial"
+      ]
+    }
+  }
+]

@@ -1,0 +1,65 @@
+version: "2026.09.13"
+capabilities:
+  - id: file_read
+    impact: 2
+    call_patterns: ["open", "Path.open", "Path.read_text", "Path.read_bytes", "os.listdir", "os.scandir", "os.walk", "glob.glob"]
+    name_keywords: ["read file", "read_file", "load file", "filesystem read"]
+    task_keywords: ["read", "summarize", "document", "file", "code review", "analyze"]
+  - id: file_write
+    impact: 3
+    call_patterns: ["Path.write_text", "Path.write_bytes", "shutil.copy", "shutil.copy2", "shutil.move", "os.rename", "os.replace"]
+    name_keywords: ["write file", "write_file", "save file", "edit file", "update file"]
+    task_keywords: ["write", "edit", "generate file", "save", "refactor", "modify code"]
+  - id: file_delete
+    impact: 5
+    call_patterns: ["Path.unlink", "Path.rmdir", "os.remove", "os.unlink", "shutil.rmtree"]
+    name_keywords: ["delete file", "delete_file", "remove file", "wipe", "purge"]
+    task_keywords: ["delete", "cleanup", "remove", "uninstall"]
+  - id: shell_execute
+    impact: 5
+    call_patterns: ["subprocess.run", "subprocess.call", "subprocess.check_call", "subprocess.check_output", "subprocess.Popen", "os.system", "os.popen", "exec", "eval"]
+    name_keywords: ["shell", "terminal", "execute command", "run command", "run_code", "python repl"]
+    task_keywords: ["debug", "test", "build", "execute", "run command", "terminal", "coding agent"]
+  - id: process_execute
+    impact: 4
+    call_patterns: ["subprocess.Popen", "multiprocessing.Process", "os.spawnl", "os.posix_spawn"]
+    name_keywords: ["launch", "start process", "run process", "spawn"]
+    task_keywords: ["launch", "start service", "run server", "start process"]
+  - id: network_access
+    impact: 2
+    call_patterns: ["requests.get", "requests.post", "requests.put", "requests.patch", "requests.delete", "requests.request", "httpx.get", "httpx.post", "httpx.request", "urllib.request.urlopen", "aiohttp.ClientSession"]
+    name_keywords: ["web", "http", "fetch", "download", "search internet", "browse"]
+    task_keywords: ["search", "web", "research", "download", "fetch", "browse", "online"]
+  - id: database_read
+    impact: 3
+    call_patterns: ["sqlite3.connect", "cursor.execute", "session.execute"]
+    name_keywords: ["query database", "database search", "sql query", "read db"]
+    task_keywords: ["database", "query", "records", "analytics", "sql"]
+  - id: database_modify
+    impact: 5
+    call_patterns: ["session.add", "session.delete", "session.commit", "cursor.executemany"]
+    name_keywords: ["update database", "delete record", "insert record", "drop table"]
+    task_keywords: ["update database", "manage records", "insert", "delete record", "migration"]
+  - id: send_message
+    impact: 4
+    call_patterns: ["smtplib.SMTP", "send_message", "send_email", "slack.chat_postMessage", "client.messages.create", "bot.send_message"]
+    name_keywords: ["send email", "send_email", "send message", "notify", "post message"]
+    task_keywords: ["email", "message", "notify", "communication", "customer support"]
+  - id: credential_access
+    impact: 5
+    call_patterns: ["os.getenv", "os.environ.get", "keyring.get_password"]
+    name_keywords: ["credential", "secret", "token", "api key", "password"]
+    task_keywords: ["credential management", "secret rotation", "authentication", "login"]
+  - id: external_state_change
+    impact: 4
+    call_patterns: ["deploy", "publish", "create_issue", "merge", "push"]
+    name_keywords: ["deploy", "publish", "create issue", "merge pull request", "push"]
+    task_keywords: ["deployment", "release", "publish", "repository maintenance", "issue management"]
+controls:
+  human_confirmation: ["confirm", "confirmation", "approval", "human_in_the_loop", "interrupt_on", "require_approval"]
+  allowlist: ["allowlist", "allowed_tools", "allowed_paths", "allowed_hosts", "allowed_domains", "host_allowlist", "path_allowlist", "whitelist"]
+  readonly: ["read_only", "readonly", "mode='r'", "mode=\"r\""]
+  sandbox: ["sandbox", "container", "chroot", "jail"]
+  parameter_validation: ["validate", "validator", "schema", "startswith", "is_relative_to", "resolve()"]
+  rate_limit: ["rate_limit", "max_calls", "quota", "throttle"]
+  scoped_access: ["scope", "workspace_root", "project_root", "base_dir"]

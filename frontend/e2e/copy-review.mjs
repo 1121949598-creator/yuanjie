@@ -1,0 +1,31 @@
+import { chromium } from 'playwright';
+import assert from 'node:assert/strict';
+const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH || 'C:/Program Files/Google/Chrome/Application/chrome.exe', headless: true });
+const page = await browser.newPage();
+const base = process.env.OPENGUARD_TEST_URL || 'http://127.0.0.1:8201';
+const errors = [];
+page.on('pageerror', e => errors.push(e.message));
+try {
+  await page.goto(`${base}/app/#/entry`);
+  assert.equal(await page.locator('legend').innerText(), '使用场景');
+  await page.goto(`${base}/app/#/new?mode=download`);
+  await page.locator('.download-guide').waitFor();
+  assert.equal(await page.locator('.avatar').count(), 0);
+  assert.match(await page.locator('.download-checklist').innerText(), /有权下载和提交源码检查/);
+  await page.getByRole('button', { name: '查看使用说明' }).click();
+  assert.doesNotMatch(await page.locator('.help-panel').innerText(), /账号认证|重新检查服务连接/);
+  await page.getByRole('button', { name: '关闭说明' }).click();
+  await page.goto(`${base}/app/#/new?mode=project`);
+  await page.locator('.download-guide').waitFor();
+  assert.doesNotMatch(await page.locator('.download-guide > p').first().innerText(), /Agent/);
+  assert.doesNotMatch(await page.locator('.download-guide details p').first().innerText(), /Agent/);
+  await page.locator('.download-guide').getByRole('link', { name: 'Agent 专项审查' }).click();
+  await page.waitForURL(/mode=agent/);
+  await page.goto(`${base}/app/#/scan/${process.env.OPENGUARD_REPORT_SCAN_ID || '62cf83837366488e'}/report`);
+  await page.locator('.report-paper').waitFor();
+  assert.doesNotMatch(await page.locator('.report-paper').innerText(), /本次使用确定性上下文基线/);
+  assert.match(await page.locator('.report-paper').innerText(), /评分方法/);
+  assert.equal(await page.getByRole('button', { name: '打印', exact: true }).count(), 1);
+  assert.deepEqual(errors, []);
+  console.log('PASS: reviewed copy, removed placeholder/reconnect, Agent route, report method retained, no page errors.');
+} finally { await browser.close(); }

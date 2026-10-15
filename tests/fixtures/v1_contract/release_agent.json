@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0",
+  "scan_id": "synthetic-release-001",
+  "scene": "release_precheck",
+  "component": {
+    "component_id": "cmp_campus_faq_agent",
+    "component_type": "agent",
+    "name": "Campus FAQ Agent",
+    "declared_purpose": "根据公开的校园常见问题资料回答课程、地点和办事流程问题。",
+    "source_spans": [
+      {
+        "path": "agent.py",
+        "start_line": 7,
+        "end_line": 8,
+        "start_column": 0,
+        "end_column": 48
+      }
+    ],
+    "extraction_status": "resolved",
+    "extraction_reasons": []
+  },
+  "capabilities": [
+    {
+      "capability_id": "cap_shell_001",
+      "capability": "shell_execute",
+      "action": "execute_arbitrary_command",
+      "resource": "local_operating_system",
+      "impact": 5,
+      "confidence": 0.99,
+      "rule_id": "component.capability.shell_execute",
+      "controls": [],
+      "evidence_refs": [
+        "ev_101"
+      ]
+    },
+    {
+      "capability_id": "cap_credential_001",
+      "capability": "credential_access",
+      "action": "read_environment_variable",
+      "resource": "process_environment_credentials",
+      "impact": 5,
+      "confidence": 0.98,
+      "rule_id": "component.capability.credential_access",
+      "controls": [],
+      "evidence_refs": [
+        "ev_102"
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "boundary_id": "bnd_101",
+      "data_scope": [
+        "process_environment_credentials"
+      ],
+      "network_target": [],
+      "credential_use": true,
+      "execution_mode": "shell",
+      "evidence_refs": [
+        "ev_101",
+        "ev_102"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "ev_101",
+      "source_span": {
+        "path": "tools/system_tool.py",
+        "start_line": 18,
+        "end_line": 18,
+        "start_column": 4,
+        "end_column": 38
+      },
+      "masked_excerpt": "subprocess.run(command, shell=True)",
+      "details": {
+        "symbol": "subprocess.run",
+        "parser": "python-ast-static",
+        "rule_version": "1.0"
+      }
+    },
+    {
+      "evidence_id": "ev_102",
+      "source_span": {
+        "path": "tools/system_tool.py",
+        "start_line": 22,
+        "end_line": 22,
+        "start_column": 4,
+        "end_column": 31
+      },
+      "masked_excerpt": "os.getenv(\"API_TOKEN\")",
+      "details": {
+        "symbol": "os.getenv",
+        "parser": "python-ast-static",
+        "rule_version": "1.0",
+        "environment_name": "API_TOKEN",
+        "environment_value": "****"
+      }
+    }
+  ],
+  "parser": {
+    "status": "success",
+    "version": "component-parser-1.0",
+    "warnings": []
+  }
+}

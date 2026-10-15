@@ -1,0 +1,3 @@
+{% extends "base.html" %}
+{% block content %}<p><a href="/scans/{{scan.id}}">← 返回项目</a></p><span class="pill {{finding.severity}}">{{finding.severity}}</span><h1>{{finding.title}}</h1><p>规则 {{finding.rule_id}} · 置信度 {{'%.2f'|format(finding.confidence)}} · 状态 {{finding.review_status}}</p><h2>脱敏证据</h2>{% for e in finding.evidence %}<pre>{{e.source_span.path}}:{{e.source_span.start_line}}
+{{e.masked_excerpt}}</pre>{% endfor %}<h2>判断依据</h2><ul>{% for item in finding.rationale %}<li>{{item}}</li>{% endfor %}</ul><h2>修复建议</h2><ol>{% for item in finding.remediation %}<li>{{item}}</li>{% endfor %}</ol>{% endblock %}

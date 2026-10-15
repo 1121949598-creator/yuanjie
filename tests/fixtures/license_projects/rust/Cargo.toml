@@ -1,0 +1,8 @@
+[package]
+name = "yuanjian-rust-fixture"
+version = "4.0.0"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+serde = "1.0"
+

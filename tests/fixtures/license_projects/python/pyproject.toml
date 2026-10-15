@@ -1,0 +1,6 @@
+[project]
+name = "yuanjian-python-fixture"
+version = "1.2.3"
+license = "MIT"
+dependencies = ["requests>=2.31"]
+

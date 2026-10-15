@@ -1,0 +1,420 @@
+/* Four reference compositions, selected by page and actual scan state. */
+.river-welcome,
+.app-shell,
+.app-shell .main-shell {
+  background: #fffefa;
+}
+.river-welcome {
+  background-image: none;
+}
+.welcome-current {
+  inset: 0 0 auto;
+  width: 100%;
+  height: 960px;
+  opacity: 1;
+  transform: none;
+  mix-blend-mode: normal;
+}
+.river-header {
+  position: relative;
+  z-index: 2;
+  background: transparent;
+}
+.river-hero {
+  min-height: 740px;
+  padding-top: 65px;
+  padding-bottom: 30px;
+  align-items: start;
+}
+.river-copy {
+  padding-top: 70px;
+  background: transparent;
+}
+.river-copy h1 {
+  font-size: 60px;
+  letter-spacing: -2.5px;
+  line-height: 1.3;
+}
+.river-companion {
+  align-self: end;
+  display: grid;
+  grid-template-columns: 155px 1fr;
+  gap: 10px;
+  align-items: end;
+  margin-bottom: 0;
+  min-height: 190px;
+}
+.river-companion > .crystal-cat {
+  grid-column: 1;
+  grid-row: 1;
+  width: 155px;
+  align-self: end;
+}
+.river-companion .cat-caption {
+  grid-column: 1;
+  grid-row: 2;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 1.5;
+  text-align: center;
+  margin: 0;
+}
+.river-companion .cat-intro {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  width: 100%;
+  max-width: none;
+  padding: 18px 18px 12px;
+  background: #fffffff5;
+  box-shadow: 0 8px 22px #638b9c0a;
+}
+.river-companion .cat-intro:before {
+  left: -8px;
+  top: auto;
+  bottom: 45px;
+  transform: rotate(-45deg);
+}
+.river-companion .cat-intro h3 {
+  font-size: 16px;
+}
+.river-companion .cat-intro p {
+  font-size: 13px;
+  min-height: 76px;
+}
+.river-companion .cat-halo {
+  display: none;
+}
+.river-handwriting {
+  position: absolute;
+  right: 20px;
+  top: -58px;
+  font:
+    21px/1.5 KaiTi,
+    STKaiti,
+    serif;
+  color: #293f4d;
+  max-width: 190px;
+  letter-spacing: 2px;
+  text-shadow: 0 1px 8px white;
+  transform: rotate(-8deg);
+}
+.river-features {
+  position: relative;
+  background: #fffefad9;
+  border-color: #dde7e6;
+  padding: 32px 0;
+}
+.welcome-boundary,
+.river-footer {
+  background: #fffefa;
+}
+.app-shell .content {
+  position: relative;
+  background: #fffefa;
+  padding: 36px 150px 50px 40px;
+  min-height: calc(100vh - 110px);
+  isolation: isolate;
+}
+.workspace-scene {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 850px;
+  z-index: -1;
+  pointer-events: none;
+}
+.scene-verse {
+  position: absolute;
+  top: 745px;
+  right: 18px;
+  width: 122px;
+  color: #384958;
+  font:
+    19px/1.75 KaiTi,
+    STKaiti,
+    serif;
+  transform: rotate(-7deg);
+  z-index: -1;
+  pointer-events: none;
+}
+.scene-verse span {
+  display: inline-block;
+  border: 1px solid #c3826d;
+  color: #b56c54;
+  font-size: 10px;
+  line-height: 1.1;
+  padding: 3px;
+  width: 19px;
+  margin: 0 5px;
+  vertical-align: middle;
+}
+.app-shell .panel {
+  background: #ffffffed;
+  border-color: #e1e8e7;
+  box-shadow: 0 3px 15px #48657205;
+}
+.app-shell .upload-grid {
+  grid-template-columns: minmax(0, 1.5fr) minmax(250px, 1fr);
+  gap: 24px;
+}
+.app-shell .import-notes {
+  background: #fffefadb;
+  padding: 18px;
+  border: 0;
+  border-left: 1px solid #dce7e4;
+  border-radius: 0;
+}
+.app-shell .upload-cat .crystal-cat.small {
+  width: 95px;
+}
+.app-shell .examples-section,
+.app-shell .import-recent {
+  background: #fffefaeb;
+  padding: 20px 0;
+  border: 0;
+  border-radius: 0;
+}
+.app-shell .scan-context {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+.app-shell .scene-report {
+  padding-left: 90px;
+  padding-right: 170px;
+}
+.scene-report .workspace-scene {
+  height: 920px;
+}
+.app-shell .report-paper {
+  background: #fffffff2;
+  border: 1px solid #e3ebe8;
+  margin: 0;
+  padding: 30px;
+  box-shadow: none;
+}
+.app-shell .scene-scan .scan-progress.panel {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  max-width: 760px;
+  min-height: 730px;
+  margin: 0 auto;
+  padding: 45px 25px;
+}
+.scene-scan .workspace-scene {
+  height: 850px;
+}
+.scene-scan .scene-verse {
+  left: 25px;
+  right: auto;
+  top: 755px;
+  width: 210px;
+}
+.scene-upload .scene-verse {
+  left: 28px;
+  right: auto;
+  top: 760px;
+  width: 200px;
+}
+.app-shell .page-heading {
+  gap: 16px;
+}
+.app-shell .page-heading p {
+  max-width: 660px;
+}
+.app-shell .scene-report .page-heading {
+  flex-wrap: wrap;
+}
+@media (min-width: 1600px) {
+  .welcome-current {
+    height: 1060px;
+  }
+  .river-hero {
+    min-height: 800px;
+  }
+  .river-companion > .crystal-cat {
+    width: 170px;
+  }
+  .river-companion {
+    grid-template-columns: 170px 1fr;
+  }
+  .workspace-scene {
+    height: 950px;
+  }
+  .scene-report .workspace-scene {
+    height: 1050px;
+  }
+}
+@media (max-width: 1200px) {
+  .app-shell .content {
+    padding: 30px 100px 45px 25px;
+  }
+  .app-shell .scene-report {
+    padding-left: 40px;
+    padding-right: 115px;
+  }
+  .app-shell .upload-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .app-shell .import-notes {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 12px 20px;
+    border-top: 1px solid #dce7e4;
+    border-left: 0;
+    padding: 20px 0;
+  }
+  .app-shell .import-notes > .upload-cat {
+    grid-row: 1 / span 5;
+    display: block;
+    border: 0;
+  }
+  .app-shell .import-notes > .upload-cat p {
+    font-size: 13px;
+  }
+  .river-hero {
+    padding: 45px 35px 30px;
+    min-height: 720px;
+    gap: 25px;
+  }
+  .river-copy h1 {
+    font-size: 49px;
+  }
+  .river-companion {
+    grid-template-columns: 115px 1fr;
+  }
+  .river-companion > .crystal-cat {
+    width: 115px;
+  }
+  .river-handwriting {
+    top: -110px;
+    right: 0;
+  }
+  .river-companion .cat-intro {
+    padding: 16px 15px 10px;
+  }
+  .welcome-current {
+    height: 880px;
+  }
+}
+@media (max-width: 760px) {
+  .app-shell .content,
+  .app-shell .scene-report {
+    padding: 25px 20px 40px;
+  }
+  .workspace-scene,
+  .scene-report .workspace-scene {
+    height: 740px;
+    left: -220px;
+    right: -85px;
+  }
+  .scene-verse {
+    display: none;
+  }
+  .app-shell .upload-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .app-shell .import-notes {
+    display: block;
+    background: #ffffffed;
+    padding: 16px;
+  }
+  .app-shell .import-notes > .upload-cat {
+    display: flex;
+  }
+  .app-shell .report-paper {
+    padding: 18px;
+    margin: 0;
+  }
+  .app-shell .scene-scan .scan-progress.panel {
+    padding: 30px 12px;
+    min-height: 670px;
+  }
+  .scene-scan .workspace-scene {
+    left: 0;
+    right: -100px;
+    height: 730px;
+  }
+  .scene-report .workspace-scene {
+    left: -230px;
+    right: -80px;
+  }
+  .river-header {
+    background: #fffefaf5;
+  }
+  .welcome-current {
+    top: 120px;
+    left: -190px;
+    right: auto;
+    width: 890px;
+    height: 890px;
+  }
+  .river-hero {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    padding: 20px 24px 35px;
+    gap: 220px;
+  }
+  .river-copy {
+    padding-top: 15px;
+    background: #fffefaed;
+  }
+  .river-copy h1 {
+    font-size: 38px;
+    line-height: 1.3;
+  }
+  .river-companion {
+    grid-template-columns: 112px 1fr;
+    gap: 5px;
+    min-height: 195px;
+    margin-bottom: 0;
+  }
+  .river-companion > .crystal-cat {
+    width: 112px;
+  }
+  .river-companion .cat-intro {
+    padding: 16px 14px 10px;
+  }
+  .river-companion .cat-intro h3 {
+    font-size: 14px;
+  }
+  .river-companion .cat-intro p {
+    font-size: 12px;
+    line-height: 1.8;
+  }
+  .river-companion .intro-bottom .text-button {
+    font-size: 11px;
+  }
+  .river-companion .cat-caption {
+    font-size: 9px;
+  }
+  .river-handwriting {
+    top: -110px;
+    font-size: 21px;
+    max-width: 170px;
+  }
+  .river-features {
+    background: #fffefa;
+  }
+  .hero-footnote {
+    font-size: 11px;
+  }
+}
+@media print {
+  .workspace-scene,
+  .scene-verse,
+  .welcome-current {
+    display: none !important;
+  }
+  .app-shell .content,
+  .app-shell .scene-report {
+    padding: 0;
+    background: white;
+  }
+  .app-shell .report-paper {
+    padding: 0;
+    border: 0;
+    background: white;
+    margin: 0;
+  }
+}

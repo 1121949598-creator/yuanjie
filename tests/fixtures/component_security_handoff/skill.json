@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0",
+  "scan_id": "handoff-skill",
+  "scene": "install_precheck",
+  "component": {
+    "component_id": "component_c6989ba32755",
+    "component_type": "skill",
+    "name": "markdown-organizer",
+    "declared_purpose": "整理用户主动选择目录中的 Markdown 文档并生成本地索引。",
+    "source_spans": [
+      {
+        "path": "SKILL.md",
+        "start_line": 3,
+        "end_line": 3,
+        "start_column": 0,
+        "end_column": 0
+      }
+    ],
+    "extraction_status": "resolved",
+    "extraction_reasons": []
+  },
+  "capabilities": [
+    {
+      "capability_id": "cap_6c961e3f2cff",
+      "capability": "file_read",
+      "action": "read_read_text",
+      "resource": "filesystem",
+      "impact": 2,
+      "confidence": 0.65,
+      "rule_id": "component.capability.file_read",
+      "controls": [
+        "extension_allowlist"
+      ],
+      "evidence_refs": [
+        "ev_001"
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "boundary_id": "bnd_c03f62d96ea3",
+      "data_scope": [
+        "filesystem"
+      ],
+      "network_target": [],
+      "credential_use": false,
+      "execution_mode": "none",
+      "evidence_refs": [
+        "ev_001"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "ev_001",
+      "source_span": {
+        "path": "scripts/index_notes.py",
+        "start_line": 11,
+        "end_line": 11,
+        "start_column": 18,
+        "end_column": 50
+      },
+      "masked_excerpt": "path.read_text(encoding=\"utf-8\")",
+      "details": {
+        "symbol": "path.read_text",
+        "parser": "python-ast-static",
+        "rule_version": "2026.09.13"
+      }
+    }
+  ],
+  "parser": {
+    "status": "success",
+    "version": "component-parser-1.0",
+    "warnings": []
+  }
+}
